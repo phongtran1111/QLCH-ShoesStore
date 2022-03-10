@@ -1,0 +1,18 @@
+//Kết nối database
+    public static String path = "jdbc:sqlserver://localhost:1433;databaseName=Polypro";
+    public static String username = "sa";
+    public static String password = "123456";
+
+    public static PreparedStatement preparedStatement(String sql, Object... args) throws SQLException {
+        Connection con = DriverManager.getConnection(path, username, password);
+        PreparedStatement pstmt = null;
+        if (sql.startsWith("{")) {
+            pstmt = con.prepareCall(sql);
+        } else {
+            pstmt = con.prepareStatement(sql);
+        }
+        for (int i = 0; i < args.length; i++) {
+            pstmt.setObject(i + 1, args[i]);
+        }
+        return pstmt;
+    }
