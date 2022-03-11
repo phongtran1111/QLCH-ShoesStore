@@ -1,6 +1,6 @@
 //Kết nối database
     public static String path = "jdbc:sqlserver://localhost:1433;databaseName=Polypro";
-    public static String username = "sa";
+    public static String username = "hatuan";
     public static String password = "123456";
 
     public static PreparedStatement preparedStatement(String sql, Object... args) throws SQLException {
